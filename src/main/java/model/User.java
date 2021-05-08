@@ -1,16 +1,27 @@
 package model;
 
-public class Users {
+import java.util.ArrayList;
+import java.util.List;
+
+public class User {
     private String firstName;
     private String lastName;
     private int age;
+    private List<User> users = new ArrayList<>();
 
-    public Users(String firstName, String lastName, int age) {
+
+    public User(String firstName, String lastName, int age) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
 
     }
+
+    public User() {
+
+    }
+
+
 
     public String getFirstName() {
         return firstName;
@@ -36,11 +47,13 @@ public class Users {
         this.age = age;
     }
 
-    public void printUsersInfo() {
-        String newLine = System.lineSeparator();
-        System.out.println("------------" + newLine +"First Name: " + firstName + newLine +
-                "Last Name: " + lastName + newLine + "Age: " + age + newLine + "------------");
-
+    public List<User> getUsers() {
+        return users;
     }
+
+    public void addUser(User user) {
+        users.add(user);
+    }
+
 }
 

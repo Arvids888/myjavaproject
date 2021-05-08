@@ -1,25 +1,47 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Note {
-    private String notes;
+    private String personalNote;
+    private String id;
+    private List<Note> notes = new ArrayList<>();
 
 
-    public Note(String notes) {
-        this.notes = notes;
+
+    public Note(String personalNote, String id) {
+        this.personalNote = personalNote;
+        this.id = id;
+    }
+
+    public Note() {
 
     }
 
-    public String getNotes() {
+    public String getpersonalNote() {
+        return personalNote;
+    }
+
+    public void setpersonalNote(String personalNote) {
+        this.personalNote = personalNote;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+
+    }
+
+    public List<Note> getNotes() {
         return notes;
     }
 
-    public void setNotes(String notes) {
-        this.notes = notes;
+    public void addNote(Note note) {
+        notes.add(note);
     }
 
-    public void printNoteInfo() {
-        System.out.println("------------");
-        System.out.println("Note " + notes);
-        System.out.println("------------");
-    }
 }

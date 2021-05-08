@@ -1,29 +1,46 @@
-import model.Category;
 import model.Note;
-import model.Users;
+import model.User;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Business {
     public static void main(String[] args) {
-        Users scoot = new Users("Scoot", "Peterson", 45);
-        Users albert = new Users("Albert", "Evans", 23);
-        Users danna = new Users("Danna", "Jenkins", 64);
-        Users valentina = new Users("Valentina", "Rivera", 27);
 
-        scoot.printUsersInfo();
-        albert.printUsersInfo();
-        danna.printUsersInfo();
-        valentina.printUsersInfo();
+        User usersList = new User();
 
-        Category tierOne = new Category("Public", 1);
-        Category tierTwo = new Category("Private",2);
+        usersList.addUser(new User("Scoot", "Peterson", 45));
+        usersList.addUser(new User("Albert", "Evans", 23));
+        usersList.addUser(new User("Danna", "Jenkins", 64));
+        usersList.addUser(new User("Valentina", "Rivera", 27));
 
-        tierOne.printCategoryInfo();
-        tierTwo.printCategoryInfo();
+        List<User> users = usersList.getUsers();
 
-        Note school = new Note("School");
-        Note work = new Note("Work");
+        Note notesList = new Note();
+        notesList.addNote(new Note("NoteOne", "Scoots Note"));
+        notesList.addNote(new Note("NoteTwo", "Alberts Note"));
+        notesList.addNote(new Note("NoteThree", "Dannas Note"));
+        notesList.addNote(new Note("NoteFour", "Valentinas Note"));
 
-        school.printNoteInfo();
-        work.printNoteInfo();
+        List<Note> notes = notesList.getNotes();
+
+        for (User user : users) {
+            for (Note note : notes)
+                if (user.getFirstName().startsWith("Scoot")) {
+                    System.out.println(note.getId());
+                }
+
+            }
+
+
+
+            //        for (User user : users)
+//            for (Note note : notes)
+//                if(user.getFirstName().startsWith(note.getId()));
+
+
+
+
     }
+    //public static void test()
 }
