@@ -1,8 +1,3 @@
-import model.Note;
-import model.User;
-
-import java.util.List;
-
 public class Helper {
 
 

@@ -1,4 +1,4 @@
-package model;
+package com.app.services;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 public class Note {
     private String personalNote;
     private String id;
-    private List<Note> notes = new ArrayList<>();
+    private List<User> users = new ArrayList<>();
 
 
 
@@ -36,12 +36,12 @@ public class Note {
 
     }
 
-    public List<Note> getNotes() {
-        return notes;
+    public List<User> getUsers() {
+        return users;
     }
 
-    public void addNote(Note note) {
-        notes.add(note);
+    public void addUser(User user) {
+        users.add(user);
     }
 
 }
