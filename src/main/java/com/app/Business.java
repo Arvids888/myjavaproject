@@ -12,6 +12,45 @@ public class Business {
     public static void main(String[] args) {
         SpringApplication.run(Business.class, args);
 
+
+        User user1 = new User("John", "Mid", 45);
+        User user2 = new User("Jane", "Grub", 34);
+
+        Note note1 = new Note("Buy milk", "n1");
+        Note note2 = new Note("Call mom", "n2");
+        Note note3 = new Note("Meeting with team", "n3");
+
+        user1.addNote(note1);
+        user1.addNote(note2);
+        user2.addNote(note3);
+
+        Note user1Note = user1.getNote("n2");
+        System.out.println("Note of user " + user1.getFirstName() + " : " + user1Note.getpersonalNote());
+    }
+//        User user = new User();
+//
+//        user.addUser(new User("ted", "fed", 30, "eee"));
+//        user.addUser(new User("chad", "gad", 40, "aaa"));
+//
+//        Note note = new Note();
+//
+//        note.addNote(new Note("ted", "10"));
+//        note.addNote(new Note("chad", "20"));
+//
+//        List<User> users = user.getUsers();
+//        List<Note> notes = note.getNotes();
+//
+//        for (User u : users) {
+//            for (Note n : notes) {
+//                if (u.getFirstName().startsWith("t")) {
+//                    System.out.println(user.getNote("ted"));
+//                }
+//            }
+//        }
+
+
+
+
 //        User scott = new User("Scoot", "Peterson", 45);
 //        User albert = new User("Albert", "Evans", 23);
 //
@@ -19,7 +58,7 @@ public class Business {
 //        scott.addNote(new Note("ScootsNoteOne", "ScootOne"));
 //        albert.addNote(new Note("AlbertsNoteOne", "AlbertOne"));
 //
-//
+////
 //        List<Note> scootNotes = scott.getNotes();
 //        List<Note> albertNotes = albert.getNotes();
 //
@@ -85,4 +124,4 @@ public class Business {
 
 }*/
         }
-    }
+

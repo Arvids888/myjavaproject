@@ -11,9 +11,10 @@ public class User {
     private int age;
     private String eMail;
     private List<Note> notes = new ArrayList<>();
+    private List<User> users = new ArrayList<>();
 
 
-    public User(String firstName, String lastName, int age, String eMail) {
+    public User(String firstName, String lastName, int age) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
@@ -65,6 +66,23 @@ public class User {
 
     public void addNote(Note note) {
         notes.add(note);
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void addUser(User user) {
+        users.add(user);
+    }
+    public Note getNote(String noteId) {
+        for (Note note : notes) {
+            if (note.getId().equals(noteId)) {
+                return note;
+            }
+        }
+        return null;
+
     }
 
 }

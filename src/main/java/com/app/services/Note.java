@@ -6,7 +6,8 @@ import java.util.List;
 public class Note {
     private String personalNote;
     private String id;
-    private List<User> users = new ArrayList<>();
+
+    private List<Note> notes = new ArrayList<>();
 
 
 
@@ -33,15 +34,17 @@ public class Note {
 
     public void setId(String id) {
         this.id = id;
-
     }
 
-    public List<User> getUsers() {
-        return users;
+    public List<Note> getNotes() {
+        return notes;
     }
 
-    public void addUser(User user) {
-        users.add(user);
+    public void addNote(Note note) {
+        notes.add(note);
     }
 
+//    public void cycle() {
+//        for ()
+//    }
 }
