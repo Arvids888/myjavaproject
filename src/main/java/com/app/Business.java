@@ -5,6 +5,7 @@ import com.app.services.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootApplication
@@ -13,20 +14,27 @@ public class Business {
         SpringApplication.run(Business.class, args);
 
 
-        User user1 = new User("John", "Mid", 45);
-        User user2 = new User("Jane", "Grub", 34);
-
-        Note note1 = new Note("Buy milk", "n1");
-        Note note2 = new Note("Call mom", "n2");
-        Note note3 = new Note("Meeting with team", "n3");
-
-        user1.addNote(note1);
-        user1.addNote(note2);
-        user2.addNote(note3);
-
-        Note user1Note = user1.getNote("n2");
-        System.out.println("Note of user " + user1.getFirstName() + " : " + user1Note.getpersonalNote());
-    }
+//        User user1 = new User("John", "Mid", 45);
+//        User user2 = new User("Jane", "Grub", 34);
+//
+//        Note note1 = new Note("Buy milk", "n1");
+//        Note note2 = new Note("Call mom", "n2");
+//        Note note3 = new Note("Meeting with team", "n3");
+//
+//        user1.addNote(note1);
+//        user1.addNote(note2);
+//        user2.addNote(note3);
+//
+//        List<User> users = new ArrayList<User>();
+//        users.add(user1);
+//        users.add(user2);
+//
+//        for (User user : users) {
+//            user.displayNotes();
+//        }
+//            Note user1Note = user1.getNote("n2");
+//            System.out.println("Note of user " + user1.getFirstName() + " : " + user1Note.getpersonalNote());
+//        }
 //        User user = new User();
 //
 //        user.addUser(new User("ted", "fed", 30, "eee"));
@@ -47,8 +55,6 @@ public class Business {
 //                }
 //            }
 //        }
-
-
 
 
 //        User scott = new User("Scoot", "Peterson", 45);
@@ -123,5 +129,7 @@ public class Business {
     }
 
 }*/
-        }
+    }
+}
+
 

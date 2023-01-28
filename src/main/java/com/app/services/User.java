@@ -27,7 +27,6 @@ public class User {
     }
 
 
-
     public String getFirstName() {
         return firstName;
     }
@@ -83,6 +82,12 @@ public class User {
         }
         return null;
 
+    }
+
+    public void displayNotes() {
+        for (Note note : notes) {
+            System.out.println(note.getId());
+        }
     }
 
 }
