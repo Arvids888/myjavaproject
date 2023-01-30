@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div th:each="user : ${allusers}">
+      <div th:text="${user.firstName}"></div>
+      <div th:text="${user.lastName}"></div>
+      <div th:text="${user.eMail}"></div>
+      <div th:text="${user.phone}"></div>
+        <br>
+        <form th:action="@{/all}" th:object="${userData}" method="POST"></form>
+        <div th:text="${user.firstName}"></div>
+        <div th:text="${user.lastName}"></div>
+        <div th:text="${user.eMail}"></div>
+        <div th:text="${user.phone}"></div>
+
+</div>
+</body>
+</html>

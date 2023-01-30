@@ -8,7 +8,8 @@
     <form th:action="@{/registration}" th:object="${userData}" method="POST">
         <div><input type="text" placeholder="First Name" th:field="*{firstName}"></div>
         <div><input type="text" placeholder="Last Name" th:field="*{lastName}"></div>
-        <div><input type="text" placeholder="Age" th:field="*{age}"></div>
+        <div><input type="text" placeholder="Phone" th:field="*{phone}"></div>
+        <div><input type="text" placeholder="eMail" th:field="*{eMail}"></div>
         <div><input type="submit" value="Register!"></div>
     </form>
 </body>

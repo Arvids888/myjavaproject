@@ -1,6 +1,4 @@
-package com.app.services;
-
-import com.app.services.Note;
+package model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,16 +6,16 @@ import java.util.List;
 public class User {
     private String firstName;
     private String lastName;
-    private int age;
+    private String phone;
     private String eMail;
     private List<Note> notes = new ArrayList<>();
     private List<User> users = new ArrayList<>();
 
 
-    public User(String firstName, String lastName, int age) {
+    public User(String firstName, String lastName, String phone, String eMail) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.age = age;
+        this.phone = phone;
         this.eMail = eMail;
 
     }
@@ -43,12 +41,12 @@ public class User {
         this.lastName = lastName;
     }
 
-    public int getAge() {
-        return age;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String geteMail() {

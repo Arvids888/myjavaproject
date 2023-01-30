@@ -1,12 +1,7 @@
 package com.app;
 
-import com.app.services.Note;
-import com.app.services.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @SpringBootApplication
 public class Business {
