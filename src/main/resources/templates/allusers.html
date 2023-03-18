@@ -6,17 +6,11 @@
 </head>
 <body>
     <div th:each="user : ${allusers}">
+      <div th:text="${user.id}"></div>
       <div th:text="${user.firstName}"></div>
       <div th:text="${user.lastName}"></div>
       <div th:text="${user.eMail}"></div>
       <div th:text="${user.phone}"></div>
-        <br>
-        <form th:action="@{/all}" th:object="${userData}" method="POST"></form>
-        <div th:text="${user.firstName}"></div>
-        <div th:text="${user.lastName}"></div>
-        <div th:text="${user.eMail}"></div>
-        <div th:text="${user.phone}"></div>
-
 </div>
 </body>
 </html>

@@ -4,20 +4,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Note {
+    private Long id;
     private String personalNote;
-    private String id;
+    private String title;
+
 
     private List<Note> notes = new ArrayList<>();
 
 
 
-    public Note(String personalNote, String id) {
+    public Note(String personalNote, String title) {
         this.personalNote = personalNote;
-        this.id = id;
+        this.title = title;
+
     }
 
-    public Note() {
+    public Note() {}
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getpersonalNote() {
@@ -28,12 +37,12 @@ public class Note {
         this.personalNote = personalNote;
     }
 
-    public String getId() {
-        return id;
+    public String getTitle() {
+        return title;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public List<Note> getNotes() {
@@ -44,7 +53,5 @@ public class Note {
         notes.add(note);
     }
 
-//    public void cycle() {
-//        for ()
-//    }
+
 }

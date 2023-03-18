@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
+    private Long id;
     private String firstName;
     private String lastName;
     private String phone;
@@ -24,6 +25,13 @@ public class User {
 
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -72,21 +80,21 @@ public class User {
     public void addUser(User user) {
         users.add(user);
     }
-    public Note getNote(String noteId) {
-        for (Note note : notes) {
-            if (note.getId().equals(noteId)) {
-                return note;
-            }
-        }
-        return null;
-
-    }
-
-    public void displayNotes() {
-        for (Note note : notes) {
-            System.out.println(note.getId());
-        }
-    }
+//    public Note getNote(String noteId) {
+//        for (Note note : notes) {
+//            if (note.getUser_id().equals(noteId)) {
+//                return note;
+//            }
+//        }
+//        return null;
+//
+//    }
+//
+//    public void displayNotes() {
+//        for (Note note : notes) {
+//            System.out.println(note.getUser_id());
+//        }
+//    }
 
 }
 
