@@ -1,6 +1,6 @@
 package com.app.services;
 
-import com.app.dao.UserDao;
+import com.app.dao.NoteDao;
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,10 +12,10 @@ import java.util.List;
 public class UserService {
 
     @Autowired
-    private UserDao userDao;
+    private NoteDao noteDao;
 
     public List<User> getUsers() {
-        return userDao.getUsers();
+        return noteDao.getUsers();
     }
 
     public User validateUser(User user) {
@@ -25,7 +25,7 @@ public class UserService {
             String phone = user.getPhone().trim().replaceAll("\\(", "")
                     .replaceAll("\\)", "");
             user.setPhone(phone);
-            userDao.storeUser(user);
+            noteDao.storeUser(user);
             return user;
         }
 

@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Note {
     private Long id;
+    private User user;
     private String personalNote;
     private String title;
 
@@ -27,6 +28,14 @@ public class Note {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getpersonalNote() {

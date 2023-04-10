@@ -30,11 +30,7 @@ public class HelloController {
         User validatedUser = userService.validateUser(user);
         model.addAttribute("status", validatedUser ==null ? "error" : "success");
         model.addAttribute("user", validatedUser == null ? user : validatedUser);
-//        if (user.getFirstName() != null) {
-//            model.addAttribute("firstName", user.getFirstName());
-//        } else {
-//            model.addAttribute("firstName", "");
-//        }
+
         return "successRegistration";
     }
 
