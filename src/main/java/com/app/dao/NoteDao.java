@@ -62,7 +62,7 @@ public class NoteDao {
     }
 
     public void storeNote(Note note) {
-        jdbcTemplate.update("INSERT INTO notes (user_id, personal_note, title) VALUES ('123', ?, ?)",
+        jdbcTemplate.update("INSERT INTO notes (user_id, personal_note, title) VALUES (?, ?, ?)",
                 note.getpersonalNote(), note.getTitle());
     }
 }

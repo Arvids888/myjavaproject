@@ -31,7 +31,21 @@ public class HelloController {
         model.addAttribute("status", validatedUser ==null ? "error" : "success");
         model.addAttribute("user", validatedUser == null ? user : validatedUser);
 
-        return "successRegistration";
+        return "redirect:/registration";
+    }
+
+    @GetMapping("/noteRegistration")
+    public String getNotes(Model model) {
+        model.addAttribute("user", noteService.getUsers());
+        model.addAttribute("note", noteService.getNotes());
+        model.addAttribute("newNote", new Note());
+        return "note";
+    }
+
+    @PostMapping("redirect:/noteRegistration")
+
+    public String addNotes(@ModelAttribute Note note) {
+        noteService.st
     }
 
 //    @GetMapping("/noteRegistration") // http://localhost:8080/hello/Notes

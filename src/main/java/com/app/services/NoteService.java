@@ -2,6 +2,7 @@ package com.app.services;
 
 import com.app.dao.NoteDao;
 import model.Note;
+import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,5 +26,13 @@ public class NoteService {
         }
 
         return null;
+    }
+
+    public List<User> getUsers() {
+        return noteDao.getUsers();
+    }
+
+    public void storeUsers(User user) {
+        noteDao.storeUser(user);
     }
 }
