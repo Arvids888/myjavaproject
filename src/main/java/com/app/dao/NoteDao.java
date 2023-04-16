@@ -54,9 +54,9 @@ public class NoteDao {
 
         Note note = new Note();
         note.setUser(user);
-        note.setId(rs.getLong("id"));
-        note.setpersonalNote(rs.getString("personal_note"));
-        note.setTitle(rs.getString("title"));
+        note.setId(rs.getLong("n_id"));
+        note.setpersonalNote(rs.getString("n_personal_note"));
+        note.setTitle(rs.getString("n_title"));
 
         return note;
     }

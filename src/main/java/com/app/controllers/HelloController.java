@@ -38,14 +38,14 @@ public class HelloController {
     public String getNotes(Model model) {
         model.addAttribute("user", noteService.getUsers());
         model.addAttribute("note", noteService.getNotes());
-        model.addAttribute("newNote", new Note());
-        return "note";
+        model.addAttribute("noteData", new Note());
+        return "noteRegistration";
     }
 
     @PostMapping("redirect:/noteRegistration")
-
     public String addNotes(@ModelAttribute Note note) {
-        noteService.st
+        noteService.validateNote(note);
+        return "redirect:/noteRegistration";
     }
 
 //    @GetMapping("/noteRegistration") // http://localhost:8080/hello/Notes
