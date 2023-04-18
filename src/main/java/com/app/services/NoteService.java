@@ -32,6 +32,20 @@ public class NoteService {
         return noteDao.getUsers();
     }
 
+    public User validateUser(User user) {
+        if (!user.getFirstName().isEmpty() && !user.getLastName().isEmpty() &&
+                !user.geteMail().isEmpty() && !user.getPhone().isEmpty()) {
+
+            String phone = user.getPhone().trim().replaceAll("\\(", "")
+                    .replaceAll("\\)", "");
+            user.setPhone(phone);
+            noteDao.storeUser(user);
+            return user;
+        }
+
+        return null;
+    }
+
     public void storeUsers(User user) {
         noteDao.storeUser(user);
     }

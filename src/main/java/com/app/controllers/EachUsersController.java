@@ -1,19 +1,19 @@
-package com.app.controllers;
-
-import com.app.services.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-
-@Controller
-public class EachUsersController {
-    @Autowired
-    private UserService userService;
-
-    @GetMapping("/eachusers")
-    public String getEachUsers(Model model) {
-        model.addAttribute("eachusers", userService.getUsers());
-        return "eachusers";
-    }
-}
+//package com.app.controllers;
+//
+//import com.app.services.UserService;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.stereotype.Controller;
+//import org.springframework.ui.Model;
+//import org.springframework.web.bind.annotation.GetMapping;
+//
+//@Controller
+//public class EachUsersController {
+//    @Autowired
+//    private UserService userService;
+//
+//    @GetMapping("/eachusers")
+//    public String getEachUsers(Model model) {
+//        model.addAttribute("eachusers", userService.getUsers());
+//        return "eachusers";
+//    }
+//}

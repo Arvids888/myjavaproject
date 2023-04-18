@@ -1,7 +1,6 @@
 package com.app.controllers;
 
 import com.app.services.NoteService;
-import com.app.services.UserService;
 import model.Note;
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class HelloController {
     @Autowired
-    private UserService userService;
-    @Autowired
     private NoteService noteService;
     @GetMapping("/registration") // http://localhost:8080/hello/Notes
     public String getHelloPage(Model model) {
@@ -27,7 +24,7 @@ public class HelloController {
 
     @PostMapping("/registration")
     public String siteRegister(@ModelAttribute User user, Model model) {
-        User validatedUser = userService.validateUser(user);
+        User validatedUser = noteService.validateUser(user);
         model.addAttribute("status", validatedUser ==null ? "error" : "success");
         model.addAttribute("user", validatedUser == null ? user : validatedUser);
 
