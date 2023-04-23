@@ -39,7 +39,7 @@ public class HelloController {
         return "noteRegistration";
     }
 
-    @PostMapping("redirect:/noteRegistration")
+    @PostMapping("/noteRegistration")
     public String addNotes(@ModelAttribute Note note) {
         noteService.validateNote(note);
         return "redirect:/noteRegistration";
