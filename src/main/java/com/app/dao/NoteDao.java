@@ -55,7 +55,7 @@ public class NoteDao {
         Note note = new Note();
         note.setUser(user);
         note.setId(rs.getLong("n_id"));
-        note.setpersonalNote(rs.getString("n_personal_note"));
+        note.setPersonalNote(rs.getString("n_personal_note"));
         note.setTitle(rs.getString("n_title"));
 
         return note;
@@ -63,6 +63,6 @@ public class NoteDao {
 
     public void storeNote(Note note) {
         jdbcTemplate.update("INSERT INTO notes (user_id, personal_note, title) VALUES (?, ?, ?)",
-                note.getUser().getId(), note.getpersonalNote(), note.getTitle());
+                note.getUser().getId(), note.getPersonalNote(), note.getTitle());
     }
 }

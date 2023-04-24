@@ -38,11 +38,11 @@ public class Note {
         this.user = user;
     }
 
-    public String getpersonalNote() {
+    public String getPersonalNote() {
         return personalNote;
     }
 
-    public void setpersonalNote(String personalNote) {
+    public void setPersonalNote(String personalNote) {
         this.personalNote = personalNote;
     }
 

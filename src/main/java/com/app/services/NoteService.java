@@ -18,7 +18,7 @@ public class NoteService {
     }
 
     public Note validateNote(Note note) {
-        if (!note.getpersonalNote().isEmpty() &&
+        if (!note.getPersonalNote().isEmpty() &&
                 !note.getTitle().isEmpty()) {
 
             noteDao.storeNote(note);

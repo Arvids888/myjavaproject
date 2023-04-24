@@ -7,9 +7,11 @@
 <body>
 <div th:each="note : ${allnotes}">
     <div th:text="${note.id}"></div>
-    <div th:text="${note.userid}"></div>
+    <div th:text="${note.user.firstName}"></div>
+    <div th:text="${note.user.lastName}"></div>
     <div th:text="${note.personalNote}"></div>
     <div th:text="${note.title}"></div>
+
 </div>
 </body>
 </html>
