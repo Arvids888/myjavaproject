@@ -50,7 +50,7 @@ public class NoteDao {
         User user = new User();
         user.setId(rs.getLong("u_id"));
         user.setFirstName(rs.getString("u_first_name"));
-        user.setFirstName(rs.getString("u_last_name"));
+        user.setLastName(rs.getString("u_last_name"));
 
         Note note = new Note();
         note.setUser(user);
