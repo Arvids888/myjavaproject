@@ -1,6 +1,7 @@
 package com.app.controllers;
 
 import com.app.services.NoteService;
+import model.Category;
 import model.Note;
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,19 @@ public class HelloController {
     public String addNotes(@ModelAttribute Note note) {
         noteService.validateNote(note);
         return "redirect:/noteRegistration";
+    }
+
+    @GetMapping("/categories")
+    public String getCategories(Model model) {
+        model.addAttribute("category", noteService.getCategories());
+        model.addAttribute("categoryData", new Category());
+        return "categories";
+    }
+
+    @PostMapping("/categories")
+    public String addCategory(@ModelAttribute Category category) {
+        noteService.storeCategory(category);
+        return "redirect:/categories";
     }
 
 //    @GetMapping("/noteRegistration") // http://localhost:8080/hello/Notes

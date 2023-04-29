@@ -1,5 +1,6 @@
 package com.app.dao;
 
+import model.Category;
 import model.Note;
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,5 +65,23 @@ public class NoteDao {
     public void storeNote(Note note) {
         jdbcTemplate.update("INSERT INTO notes (user_id, personal_note, title) VALUES (?, ?, ?)",
                 note.getUser().getId(), note.getPersonalNote(), note.getTitle());
+    }
+
+    public List<Category> getCategories() {
+        RowMapper<Category> rowMapper = (rs, rowNumber) -> mapCategories(rs);
+        return jdbcTemplate.query("SELECT * FROM categories", rowMapper);
+    }
+
+    private Category mapCategories(ResultSet rs) throws SQLException {
+        Category category = new Category();
+
+        category.setId(rs.getLong("id"));
+        category.setName(rs.getString("name"));
+
+        return category;
+    }
+
+    public void storeCategory(Category category) {
+        jdbcTemplate.update("INSERT INTO categories (name) VALUES (?)", category.getName());
     }
 }
