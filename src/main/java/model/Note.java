@@ -6,6 +6,7 @@ import java.util.List;
 public class Note {
     private Long id;
     private User user;
+    private Category category;
     private String personalNote;
     private String title;
 
@@ -36,6 +37,14 @@ public class Note {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public String getPersonalNote() {

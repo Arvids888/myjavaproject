@@ -36,6 +36,7 @@ public class HelloController {
     public String getNotes(Model model) {
         model.addAttribute("user", noteService.getUsers());
         model.addAttribute("note", noteService.getNotes());
+        model.addAttribute("category", noteService.getCategories());
         model.addAttribute("noteData", new Note());
         return "noteRegistration";
     }
