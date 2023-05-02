@@ -18,6 +18,10 @@ public class NoteService {
         return noteDao.getNotes();
     }
 
+    public List<Note> getNotes(long id) {
+        return noteDao.getNotes(id);
+    }
+
     public Note validateNote(Note note) {
         if (!note.getPersonalNote().isEmpty() &&
                 !note.getTitle().isEmpty()) {
@@ -50,6 +54,8 @@ public class NoteService {
     public List<Category> getCategories() {
         return noteDao.getCategories();
     }
+
+
 
     public void storeCategory(Category category) {
         noteDao.storeCategory(category);

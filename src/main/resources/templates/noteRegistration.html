@@ -7,10 +7,10 @@
 <body>
 <div style="display: flex;">
     <div style="margin-left: 10px">
-        <a href="/_admin/noteRegistration/">All</a>
+        <a href="/noteRegistration/">All</a>
     </div>
-    <div th:each="cat : ${categories}" style="margin-left: 10px">
-        <a th:href="'/noteRegistration/' + ${cat.id}" th:text="${cat.name}"></a>
+    <div th:each="c : ${category}" style="margin-left: 10px">
+        <a th:href="'/noteRegistration/' + ${c.id}" th:text="${c.name}"></a>
     </div>
 </div>
 <form th:action="@{/noteRegistration}" th:object="${noteData}" method="POST">
@@ -29,8 +29,8 @@
     <div><input type="submit" value="Register!"></div>
     <div th:each="n : ${note}">
         <div th:text="${n.id}"></div>
-        <div th:text="${n.user.firstName}"></div>
-        <div th:text="${n.user.lastName}"></div>
+        <div th:text="${n.user.firstName + ' ' + n.user.lastName}"></div>
+        <div th:text="${n.category.name}"></div>
         <div th:text="${n.title}"></div>
         <div th:text="${n.personalNote}"></div>
     </div>

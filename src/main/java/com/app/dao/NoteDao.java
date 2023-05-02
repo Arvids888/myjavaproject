@@ -48,6 +48,16 @@ public class NoteDao {
                 "INNER JOIN categories c ON n.category_id = c.id", rowMapper);
     }
 
+    public List<Note> getNotes(long categoryId) {
+        RowMapper<Note> rowMapper = (rs, rowNumber) -> mapNotes(rs);
+        return jdbcTemplate.query("SELECT n.id AS n_id, n.personal_note AS n_personal_note, n.title AS n_title, " +
+                "u.id AS u_id, u.first_name AS u_first_name, u.last_name AS u_last_name, c.id AS c_id, c.name AS c_name " +
+                "FROM notes n " +
+                "INNER JOIN users u ON n.user_id = u.id " +
+                "INNER JOIN categories c ON n.category_id = c.id " +
+                "WHERE n.category_id = ?", rowMapper, categoryId);
+    }
+
     private Note mapNotes(ResultSet rs) throws SQLException {
         User user = new User();
         user.setId(rs.getLong("u_id"));
@@ -69,8 +79,8 @@ public class NoteDao {
     }
 
     public void storeNote(Note note) {
-        jdbcTemplate.update("INSERT INTO notes (user_id, personal_note, title) VALUES (?, ?, ?)",
-                note.getUser().getId(), note.getPersonalNote(), note.getTitle());
+        jdbcTemplate.update("INSERT INTO notes (user_id, category_id, personal_note, title) VALUES (?, ?, ?, ?)",
+                note.getUser().getId(), note.getCategory().getId(), note.getPersonalNote(), note.getTitle());
     }
 
     public List<Category> getCategories() {

@@ -7,10 +7,7 @@ import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class HelloController {
@@ -36,6 +33,15 @@ public class HelloController {
     public String getNotes(Model model) {
         model.addAttribute("user", noteService.getUsers());
         model.addAttribute("note", noteService.getNotes());
+        model.addAttribute("category", noteService.getCategories());
+        model.addAttribute("noteData", new Note());
+        return "noteRegistration";
+    }
+
+    @GetMapping("/noteRegistration/{id}")
+    public String getNotes(@PathVariable(value = "id") long id, Model model) {
+        model.addAttribute("user", noteService.getUsers());
+        model.addAttribute("note", noteService.getNotes(id));
         model.addAttribute("category", noteService.getCategories());
         model.addAttribute("noteData", new Note());
         return "noteRegistration";
