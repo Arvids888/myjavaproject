@@ -38,23 +38,23 @@ public class HelloController {
         return "noteRegistration";
     }
 
-    @GetMapping("/noteRegistration/{idNotes}")
-    public String getNotes(@PathVariable(value = "idNotes") long id, Model model) {
-        model.addAttribute("user", noteService.getUsers());
-        model.addAttribute("note", noteService.getNotes(id));
+    @GetMapping("/noteRegistration/{id}")
+    public String getNotes(@PathVariable(value = "id") long id, Model model) {
+        model.addAttribute("user", noteService.getUsers(id));
+        model.addAttribute("note", noteService.getCategory(id));
         model.addAttribute("category", noteService.getCategories());
         model.addAttribute("noteData", new Note());
         return "noteRegistration";
     }
 
-    @GetMapping("/noteRegistration/{id}")
-    public String getUsers(@PathVariable(value = "id") long id, Model model) {
-        model.addAttribute("user", noteService.getUsers());
-        model.addAttribute("note", noteService.getUsers(id));
-        model.addAttribute("category", noteService.getCategories());
-        model.addAttribute("noteData", new Note());
-        return "noteRegistration";
-    }
+//    @GetMapping("/noteRegistration/{id}")
+//    public String getUsers(@PathVariable(value = "id") long id, Model model) {
+//        model.addAttribute("user", noteService.getUsers(id));
+//        model.addAttribute("note", noteService.getNotes());
+//        model.addAttribute("category", noteService.getCategories());
+//        model.addAttribute("noteData", new Note());
+//        return "noteRegistration";
+//    }
 
     @PostMapping("/noteRegistration")
     public String addNotes(@ModelAttribute Note note) {
