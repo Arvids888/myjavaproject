@@ -38,10 +38,19 @@ public class HelloController {
         return "noteRegistration";
     }
 
-    @GetMapping("/noteRegistration/{id}")
-    public String getNotes(@PathVariable(value = "id") long id, Model model) {
+    @GetMapping("/noteRegistration/{idNotes}")
+    public String getNotes(@PathVariable(value = "idNotes") long id, Model model) {
         model.addAttribute("user", noteService.getUsers());
         model.addAttribute("note", noteService.getNotes(id));
+        model.addAttribute("category", noteService.getCategories());
+        model.addAttribute("noteData", new Note());
+        return "noteRegistration";
+    }
+
+    @GetMapping("/noteRegistration/{id}")
+    public String getUsers(@PathVariable(value = "id") long id, Model model) {
+        model.addAttribute("user", noteService.getUsers());
+        model.addAttribute("note", noteService.getUsers(id));
         model.addAttribute("category", noteService.getCategories());
         model.addAttribute("noteData", new Note());
         return "noteRegistration";

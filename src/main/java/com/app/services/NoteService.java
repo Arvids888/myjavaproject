@@ -19,7 +19,11 @@ public class NoteService {
     }
 
     public List<Note> getNotes(long id) {
-        return noteDao.getNotes(id);
+        return noteDao.getCatgoryId(id);
+    }
+
+    public List<Note> getUsers(long id) {
+        return noteDao.getNotesId(id);
     }
 
     public Note validateNote(Note note) {
