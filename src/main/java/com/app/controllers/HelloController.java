@@ -40,8 +40,8 @@ public class HelloController {
 
     @GetMapping("/noteRegistration/{id}")
     public String getNotes(@PathVariable(value = "id") long id, Model model) {
-        model.addAttribute("user", noteService.getUsers(id));
-        model.addAttribute("note", noteService.getCategory(id));
+//        model.addAttribute("user", noteService.getNotes(id));
+        model.addAttribute("note", noteService.getNotes(id, id));
         model.addAttribute("category", noteService.getCategories());
         model.addAttribute("noteData", new Note());
         return "noteRegistration";

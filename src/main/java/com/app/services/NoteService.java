@@ -18,13 +18,13 @@ public class NoteService {
         return noteDao.getNotes();
     }
 
-    public List<Category> getCategory(long id) {
-        return noteDao.getCategoryId(id);
+    public List<Note> getNotes(long cId, long nId) {
+        return noteDao.getNotes(cId, nId);
     }
 
-    public List<User> getUsers(long id) {
-        return noteDao.getUserId(id);
-    }
+//    public List<Note> getUsers(long id) {
+//        return noteDao.getCategoryId(id);
+//    }
 
     public Note validateNote(Note note) {
         if (!note.getPersonalNote().isEmpty() &&

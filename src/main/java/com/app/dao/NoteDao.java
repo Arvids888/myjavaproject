@@ -60,25 +60,25 @@ public class NoteDao {
                 "INNER JOIN categories c ON n.category_id = c.id", rowMapper);
     }
 
-    public List<Category> getCategoryId(long categoryId) {
-        RowMapper<Category> rowMapper = (rs, rowNumber) -> mapCategories(rs);
+    public List<Note> getNotes(long categoryId, long userId) {
+        RowMapper<Note> rowMapper = (rs, rowNumber) -> mapNotes(rs);
         return jdbcTemplate.query("SELECT n.id AS n_id, n.personal_note AS n_personal_note, n.title AS n_title, " +
                 "u.id AS u_id, u.first_name AS u_first_name, u.last_name AS u_last_name, c.id AS c_id, c.name AS c_name " +
                 "FROM notes n " +
                 "INNER JOIN users u ON n.user_id = u.id " +
                 "INNER JOIN categories c ON n.category_id = c.id " +
-                "WHERE n.category_id = ?", rowMapper, categoryId);
+                "WHERE n.category_id = ? AND n.user_id = ?", rowMapper, categoryId, userId);
     }
 
-    public List<User> getUserId(long userId) {
-        RowMapper<User> rowMapper = (rs, rowNumber) -> mapUser(rs);
-        return jdbcTemplate.query("SELECT n.id AS n_id, n.personal_note AS n_personal_note, n.title AS n_title, " +
-                "u.id AS u_id, u.first_name AS u_first_name, u.last_name AS u_last_name, c.id AS c_id, c.name AS c_name " +
-                "FROM notes n " +
-                "INNER JOIN users u ON n.user_id = u.id " +
-                "INNER JOIN categories c ON n.category_id = c.id " +
-                "WHERE n.user_id = ?", rowMapper, userId);
-    }
+//    public List<Note> getUserId(long userId) {
+//        RowMapper<Note> rowMapper = (rs, rowNumber) -> mapNotes(rs);
+//        return jdbcTemplate.query("SELECT n.id AS n_id, n.personal_note AS n_personal_note, n.title AS n_title, " +
+//                "u.id AS u_id, u.first_name AS u_first_name, u.last_name AS u_last_name, c.id AS c_id, c.name AS c_name " +
+//                "FROM notes n " +
+//                "INNER JOIN users u ON n.user_id = u.id " +
+//                "INNER JOIN categories c ON n.category_id = c.id " +
+//                "WHERE n.user_id = ?", rowMapper, userId);
+//    }
 
     private Note mapNotes(ResultSet rs) throws SQLException {
         User user = new User();
