@@ -18,11 +18,11 @@ public class NoteDao {
     private JdbcTemplate jdbcTemplate;
 
     public List<User> getUsers() {
-        RowMapper<User> rowMapper = (rs, rowNumber) -> mapUser(rs);
+        RowMapper<User> rowMapper = (rs, rowNumber) -> mapUsers(rs);
         return jdbcTemplate.query("SELECT * FROM users", rowMapper);
     }
 
-    private User mapUser(ResultSet rs) throws SQLException {
+    private User mapUsers(ResultSet rs) throws SQLException {
         User user = new User();
 
         user.setId(rs.getLong("id"));
@@ -30,6 +30,18 @@ public class NoteDao {
         user.setLastName(rs.getString("last_name"));
         user.seteMail(rs.getString("email"));
         user.setPhone(rs.getString("phone"));
+
+        return user;
+    }
+
+    private User mapUser(ResultSet rs) throws SQLException {
+        User user = new User();
+
+        user.setId(rs.getLong("u_id"));
+        user.setFirstName(rs.getString("u_first_name"));
+        user.setLastName(rs.getString("u_last_name"));
+//        user.seteMail(rs.getString("u_email"));
+//        user.setPhone(rs.getString("u_phone"));
 
         return user;
     }
@@ -48,8 +60,8 @@ public class NoteDao {
                 "INNER JOIN categories c ON n.category_id = c.id", rowMapper);
     }
 
-    public List<Note> getCategoryId(long categoryId) {
-        RowMapper<Note> rowMapper = (rs, rowNumber) -> mapNotes(rs);
+    public List<Category> getCategoryId(long categoryId) {
+        RowMapper<Category> rowMapper = (rs, rowNumber) -> mapCategories(rs);
         return jdbcTemplate.query("SELECT n.id AS n_id, n.personal_note AS n_personal_note, n.title AS n_title, " +
                 "u.id AS u_id, u.first_name AS u_first_name, u.last_name AS u_last_name, c.id AS c_id, c.name AS c_name " +
                 "FROM notes n " +
@@ -58,8 +70,8 @@ public class NoteDao {
                 "WHERE n.category_id = ?", rowMapper, categoryId);
     }
 
-    public List<Note> getUserId(long userId) {
-        RowMapper<Note> rowMapper = (rs, rowNumber) -> mapNotes(rs);
+    public List<User> getUserId(long userId) {
+        RowMapper<User> rowMapper = (rs, rowNumber) -> mapUser(rs);
         return jdbcTemplate.query("SELECT n.id AS n_id, n.personal_note AS n_personal_note, n.title AS n_title, " +
                 "u.id AS u_id, u.first_name AS u_first_name, u.last_name AS u_last_name, c.id AS c_id, c.name AS c_name " +
                 "FROM notes n " +

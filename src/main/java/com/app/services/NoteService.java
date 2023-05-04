@@ -18,11 +18,11 @@ public class NoteService {
         return noteDao.getNotes();
     }
 
-    public List<Note> getCategory(long id) {
+    public List<Category> getCategory(long id) {
         return noteDao.getCategoryId(id);
     }
 
-    public List<Note> getUsers(long id) {
+    public List<User> getUsers(long id) {
         return noteDao.getUserId(id);
     }
 

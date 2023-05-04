@@ -30,7 +30,7 @@
     <div th:each="n : ${note}">
         <div th:text="${n.id}"></div>
         <div><a th:href="'/noteRegistration/' + ${n.id}"
-                th:text="${n.user.firstName + ' ' + n.user.lastName}"></a></div>
+                th:text="${n.user.firstName} + ' ' + ${n.user.lastName}"></a></div>
         <div th:text="${n.category.name}"></div>
         <div th:text="${n.title}"></div>
         <div th:text="${n.personalNote}"></div>
