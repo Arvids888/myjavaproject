@@ -10,7 +10,7 @@
         <a href="/noteRegistration/">All</a>
     </div>
     <div th:each="c : ${category}" style="margin-left: 10px">
-        <a th:href="'/noteRegistration/' + ${c.id}" th:text="${c.name}"></a>
+        <a th:href="'/noteRegistration/' + 'category/' + ${c.id}" th:text="${c.name}"></a>
     </div>
 </div>
 <form th:action="@{/noteRegistration}" th:object="${noteData}" method="POST">
@@ -29,7 +29,7 @@
     <div><input type="submit" value="Register!"></div>
     <div th:each="n : ${note}">
         <div th:text="${n.id}"></div>
-        <div><a th:href="'/noteRegistration/' + ${n.id}"
+        <div><a th:href="'/noteRegistration/' + 'user/' + ${n.id}"
                 th:text="${n.user.firstName} + ' ' + ${n.user.lastName}"></a></div>
         <div th:text="${n.category.name}"></div>
         <div th:text="${n.title}"></div>

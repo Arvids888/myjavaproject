@@ -60,25 +60,23 @@ public class NoteDao {
                 "INNER JOIN categories c ON n.category_id = c.id", rowMapper);
     }
 
-    public List<Note> getNotes(long categoryId, long userId) {
-        RowMapper<Note> rowMapper = (rs, rowNumber) -> mapNotes(rs);
+    public List<Note> getCategoryId(long categoryId) {
+        RowMapper<Note> rowMapper = (rs, rowNumber) -> mapNotesCategory(rs);
         return jdbcTemplate.query("SELECT n.id AS n_id, n.personal_note AS n_personal_note, n.title AS n_title, " +
-                "u.id AS u_id, u.first_name AS u_first_name, u.last_name AS u_last_name, c.id AS c_id, c.name AS c_name " +
+                "c.id AS c_id, c.name AS c_name " +
                 "FROM notes n " +
-                "INNER JOIN users u ON n.user_id = u.id " +
                 "INNER JOIN categories c ON n.category_id = c.id " +
-                "WHERE n.category_id = ? AND n.user_id = ?", rowMapper, categoryId, userId);
+                "WHERE n.category_id = ?", rowMapper, categoryId);
     }
 
-//    public List<Note> getUserId(long userId) {
-//        RowMapper<Note> rowMapper = (rs, rowNumber) -> mapNotes(rs);
-//        return jdbcTemplate.query("SELECT n.id AS n_id, n.personal_note AS n_personal_note, n.title AS n_title, " +
-//                "u.id AS u_id, u.first_name AS u_first_name, u.last_name AS u_last_name, c.id AS c_id, c.name AS c_name " +
-//                "FROM notes n " +
-//                "INNER JOIN users u ON n.user_id = u.id " +
-//                "INNER JOIN categories c ON n.category_id = c.id " +
-//                "WHERE n.user_id = ?", rowMapper, userId);
-//    }
+    public List<Note> getUserId(long userId) {
+        RowMapper<Note> rowMapper = (rs, rowNumber) -> mapNotesUser(rs);
+        return jdbcTemplate.query("SELECT n.id AS n_id, n.personal_note AS n_personal_note, n.title AS n_title, " +
+                "u.id AS u_id, u.first_name AS u_first_name, u.last_name AS u_last_name " +
+                "FROM notes n " +
+                "INNER JOIN users u ON n.user_id = u.id " +
+                "WHERE n.user_id = ?", rowMapper, userId);
+    }
 
     private Note mapNotes(ResultSet rs) throws SQLException {
         User user = new User();
@@ -92,6 +90,46 @@ public class NoteDao {
 
         Note note = new Note();
         note.setUser(user);
+        note.setCategory(category);
+        note.setId(rs.getLong("n_id"));
+        note.setPersonalNote(rs.getString("n_personal_note"));
+        note.setTitle(rs.getString("n_title"));
+
+        return note;
+    }
+
+    private Note mapNotesUser(ResultSet rs) throws SQLException {
+        User user = new User();
+        user.setId(rs.getLong("u_id"));
+        user.setFirstName(rs.getString("u_first_name"));
+        user.setLastName(rs.getString("u_last_name"));
+
+//        Category category = new Category();
+//        category.setId(rs.getLong("c_id"));
+//        category.setName(rs.getString("c_name"));
+
+        Note note = new Note();
+        note.setUser(user);
+//        note.setCategory(category);
+        note.setId(rs.getLong("n_id"));
+        note.setPersonalNote(rs.getString("n_personal_note"));
+        note.setTitle(rs.getString("n_title"));
+
+        return note;
+    }
+
+    private Note mapNotesCategory(ResultSet rs) throws SQLException {
+//        User user = new User();
+//        user.setId(rs.getLong("u_id"));
+//        user.setFirstName(rs.getString("u_first_name"));
+//        user.setLastName(rs.getString("u_last_name"));
+
+        Category category = new Category();
+        category.setId(rs.getLong("c_id"));
+        category.setName(rs.getString("c_name"));
+
+        Note note = new Note();
+//        note.setUser(user);
         note.setCategory(category);
         note.setId(rs.getLong("n_id"));
         note.setPersonalNote(rs.getString("n_personal_note"));
