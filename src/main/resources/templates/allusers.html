@@ -7,8 +7,9 @@
 <body>
 <div th:each="user : ${allusers}">
     <div th:text="${user.id}"></div>
-    <div th:text="${user.firstName}"></div>
-    <div th:text="${user.lastName}"></div>
+    <div><a th:href="'/allusers/' + ${user.id}"
+            th:text="${user.firstName} + ${user.lastName}"></a></div>
+    <div th:text="${user.note.title}"></div>
     <div th:text="${user.eMail}"></div>
     <div th:text="${user.phone}"></div>
 </div>

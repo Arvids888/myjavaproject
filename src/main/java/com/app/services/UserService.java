@@ -1,21 +1,15 @@
-//package com.app.services;
-//
-//import com.app.dao.NoteDao;
-//import model.User;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Service;
-//
-//import java.util.ArrayList;
-//import java.util.List;
-//
-//@Service
-//public class UserService {
+package com.app.services;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserService {
 //
 //    @Autowired
 //    private NoteDao noteDao;
 //
 //    public List<User> getUsers() {
-//        return noteDao.getUsers();
+//        return noteDao.getAllUsers();
 //    }
 //
 //    public User validateUser(User user) {
@@ -25,10 +19,10 @@
 //            String phone = user.getPhone().trim().replaceAll("\\(", "")
 //                    .replaceAll("\\)", "");
 //            user.setPhone(phone);
-//            noteDao.storeUser(user);
+//            noteDao.storeAllUser(user);
 //            return user;
 //        }
 //
 //        return null;
 //    }
-//}
+}

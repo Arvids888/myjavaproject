@@ -27,7 +27,7 @@
         </th:block>
     </select>
     <div><input type="submit" value="Register!"></div>
-    <div th:each="n : ${note}">
+    <div th:each="n : ${noteU}">
         <div th:text="${n.id}"></div>
         <div><a th:href="'/noteRegistrationUser/' + ${n.user.id}"
                 th:text="${n.user.firstName} + ' ' + ${n.user.lastName}"></a></div>

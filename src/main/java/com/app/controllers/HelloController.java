@@ -31,35 +31,44 @@ public class HelloController {
 
     @GetMapping("/noteRegistration")
     public String getNotes(Model model) {
+        model.addAttribute("userData", new User());
         model.addAttribute("user", noteService.getUsers());
         model.addAttribute("note", noteService.getNotes());
-        model.addAttribute("category", noteService.getCategories());
+        model.addAttribute("categories", noteService.getCategories());
         model.addAttribute("noteData", new Note());
         return "noteRegistration";
     }
 
-    @GetMapping("/noteRegistration/{category}")
-    public String getNotes(@PathVariable(value = "category") long category, Model model) {
+    @GetMapping("/noteRegistration/{id}")
+    public String getNotes(@PathVariable(value = "id") long id, Model model) {
+        model.addAttribute("userData", new User());
         model.addAttribute("user", noteService.getUsers());
-        model.addAttribute("note", noteService.getNotes());
-        model.addAttribute("category", noteService.getCategories(category));
+        model.addAttribute("categories", noteService.getCategories());
+        model.addAttribute("note", noteService.getNoteCategories(id));
         model.addAttribute("noteData", new Note());
         return "noteRegistration";
     }
 
-    @GetMapping("/noteRegistration/{user}")
-    public String getUsers(@PathVariable(value = "user") long user, Model model) {
-        model.addAttribute("user", noteService.getUsers(user));
-        model.addAttribute("note", noteService.getNotes());
-        model.addAttribute("category", noteService.getCategories());
+    @GetMapping("/noteRegistrationUser/{id}")
+    public String getNotesU(@PathVariable(value = "id") long id, Model model) {
+        model.addAttribute("userData", new User());
+        model.addAttribute("user", noteService.getUsers());
+        model.addAttribute("categories", noteService.getCategories());
+        model.addAttribute("noteU", noteService.getNoteUsers(id));
         model.addAttribute("noteData", new Note());
-        return "noteRegistration";
+        return "noteRegistrationUser";
     }
 
     @PostMapping("/noteRegistration")
     public String addNotes(@ModelAttribute Note note) {
         noteService.validateNote(note);
         return "redirect:/noteRegistration";
+    }
+
+    @PostMapping("/noteRegistrationUser")
+    public String addNotesU(@ModelAttribute Note note) {
+        noteService.validateNote(note);
+        return "redirect:/noteRegistrationUser";
     }
 
     @GetMapping("/categories")
@@ -74,21 +83,4 @@ public class HelloController {
         noteService.storeCategory(category);
         return "redirect:/categories";
     }
-
-//    @GetMapping("/noteRegistration") // http://localhost:8080/hello/Notes
-//    public String getNotePage(Model model) {
-//        model.addAttribute("noteData", new Note());
-//        return "noteRegistration";
-//
-//    }
-//
-//    @PostMapping("/noteRegistration")
-//    public String siteNoteRegister(@RequestParam("user") @ModelAttribute Note note, String user, Model model) {
-//        Note validatedNote = noteService.validateNote(note);
-//        String validatedUser = getHelloPage(model);
-//        model.addAttribute("status", validatedNote ==null ? "error" : "success");
-//        model.addAttribute("note", validatedNote == null ? note : validatedNote);
-//        model.addAttribute("user", validatedUser == null ? user : validatedUser);
-//        return "successRegistration";
-//    }
 }

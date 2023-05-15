@@ -18,12 +18,12 @@ public class NoteService {
         return noteDao.getNotes();
     }
 
-//    public List<Note> getNotes(long id) {
-//        return noteDao.getNotes(id);
-//    }
+    public List<Note> getNoteCategories(long id) {
+        return noteDao.getCategoryNotesId(id);
+    }
 
-    public List<Note> getUsers(long id) {
-        return noteDao.getUserId(id);
+    public List<Note> getNoteUsers(long id) {
+        return noteDao.getUserNotesId(id);
     }
 
     public Note validateNote(Note note) {
@@ -48,7 +48,7 @@ public class NoteService {
             String phone = user.getPhone().trim().replaceAll("\\(", "")
                     .replaceAll("\\)", "");
             user.setPhone(phone);
-            noteDao.storeUser(user);
+            noteDao.storeAllUser(user);
             return user;
         }
 
@@ -57,10 +57,6 @@ public class NoteService {
 
     public List<Category> getCategories() {
         return noteDao.getCategories();
-    }
-
-    public List<Note> getCategories(long id) {
-        return noteDao.getCategoryId(id);
     }
 
     public void storeCategory(Category category) {
