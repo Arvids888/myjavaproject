@@ -17,45 +17,6 @@ public class NoteDao {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-//    public List<User> getAllUsers() {
-//        RowMapper<User> rowMapper = (rs, rowNumber) -> mapAllUsers(rs);
-//        return jdbcTemplate.query("SELECT n.id AS n_id, n.personal_note AS n_personal_note, n.title AS n_title, " +
-//                "u.id AS u_id, u.first_name AS u_first_name, u.last_name AS u_last_name " +
-//                "FROM users u " +
-//                "INNER JOIN notes n ON u.note_id = n.id ", rowMapper);
-//    }
-//
-//    public List<User> getAllUserId(long userId) {
-//        RowMapper<User> rowMapper = (rs, rowNumber) -> mapAllUsers(rs);
-//        return jdbcTemplate.query("SELECT n.id AS n_id, n.personal_note AS n_personal_note, n.title AS n_title, " +
-//                "u.id AS u_id, u.first_name AS u_first_name, u.last_name AS u_last_name " +
-//                "FROM users u " +
-//                "INNER JOIN notes n ON u.note_id = n.id " +
-//                "WHERE u.note_id = ?", rowMapper, userId);
-//    }
-//
-//    private User mapAllUsers(ResultSet rs) throws SQLException {
-//        Note note = new Note();
-//        note.setId(rs.getLong("n_id"));
-//        note.setPersonalNote(rs.getString("n_personal_note"));
-//        note.setTitle(rs.getString("n_title"));
-//
-//        User user = new User();
-//        user.setNote(note);
-//        user.setId(rs.getLong("id"));
-//        user.setFirstName(rs.getString("first_name"));
-//        user.setLastName(rs.getString("last_name"));
-//
-//
-//
-//        return user;
-//    }
-
-//    public List<User> getUsers() {
-//        RowMapper<User> rowMapper = (rs, rowNumber) -> mapUsers(rs);
-//        return jdbcTemplate.query("SELECT * FROM users", rowMapper);
-//    }
-
     public List<User> getUsers() {
         RowMapper<User> rowMapper = (rs, rowNumber) -> mapUsers(rs);
         return jdbcTemplate.query("SELECT * FROM users", rowMapper);
@@ -66,12 +27,6 @@ public class NoteDao {
         user.setId(rs.getLong("id"));
         user.setFirstName(rs.getString("first_name"));
         user.setLastName(rs.getString("last_name"));
-
-//        Note note = new Note();
-//        note.setUser(user);
-//        note.setId(rs.getLong("n_id"));
-//        note.setPersonalNote(rs.getString("n_personal_note"));
-//        note.setTitle(rs.getString("n_title"));
 
         return user;
     }
