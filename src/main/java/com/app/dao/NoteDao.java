@@ -22,18 +22,25 @@ public class NoteDao {
         return jdbcTemplate.query("SELECT * FROM users", rowMapper);
     }
 
+    public List<User> getUsersByEmail(String email) {
+        RowMapper<User> rowMapper = (rs, rowNumber) -> mapUsers(rs);
+        return jdbcTemplate.query("SELECT * FROM users WHERE email = ?", rowMapper, email);
+    }
+
     private User mapUsers(ResultSet rs) throws SQLException {
         User user = new User();
         user.setId(rs.getLong("id"));
         user.setFirstName(rs.getString("first_name"));
         user.setLastName(rs.getString("last_name"));
+        user.seteMail(rs.getString("email"));
+        user.setPassword(rs.getString("password"));
 
         return user;
     }
 
     public void storeAllUser(User user) {
-        jdbcTemplate.update("INSERT INTO users (first_name, last_name, email, phone, password) VALUES (?, ?, ?, ?, '777')",
-                user.getFirstName(), user.getLastName(), user.geteMail(), user.getPhone());
+        jdbcTemplate.update("INSERT INTO users (first_name, last_name, email, phone, password) VALUES (?, ?, ?, ?, ?)",
+                user.getFirstName(), user.getLastName(), user.geteMail(), user.getPhone(), user.getPassword());
     }
 
     public List<Note> getNotes() {
