@@ -31,7 +31,6 @@ public class HelloController {
 
     @GetMapping("/noteRegistration")
     public String getNotes(Model model) {
-        model.addAttribute("userData", new User());
         model.addAttribute("user", noteService.getUsers());
         model.addAttribute("note", noteService.getNotes());
         model.addAttribute("categories", noteService.getCategories());
@@ -41,7 +40,6 @@ public class HelloController {
 
     @GetMapping("/noteRegistration/{id}")
     public String getNotes(@PathVariable(value = "id") long id, Model model) {
-        model.addAttribute("userData", new User());
         model.addAttribute("user", noteService.getUsers());
         model.addAttribute("categories", noteService.getCategories());
         model.addAttribute("note", noteService.getNoteCategories(id));
@@ -51,7 +49,6 @@ public class HelloController {
 
     @GetMapping("/noteRegistrationUser/{id}")
     public String getNotesU(@PathVariable(value = "id") long id, Model model) {
-        model.addAttribute("userData", new User());
         model.addAttribute("user", noteService.getUsers());
         model.addAttribute("categories", noteService.getCategories());
         model.addAttribute("noteU", noteService.getNoteUsers(id));
